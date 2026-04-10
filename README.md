@@ -110,7 +110,3 @@ Landit is BYOK (bring your own key). Get a free API key from any supported provi
 - **Open inspection** — No obfuscation, no phone-home
 
 ## Built by [HumanCTO](https://humancto.com)
-
----
-
-_Built with SwiftUI. Powered by Gemini Live API, GRDB, and too much coffee._
