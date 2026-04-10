@@ -22,7 +22,7 @@ Find jobs. Ace interviews. Track everything. Land the offer.
 
 ---
 
-**7+ Job Sources** &bull; **Live AI Interviews** &bull; **Pipeline Tracking** &bull; **Career Coach** &bull; **100% Local**
+**7+ Job Sources** &bull; **Live AI Interviews** &bull; **Session Recording** &bull; **Pipeline Tracking** &bull; **Career Coach** &bull; **100% Local**
 
 </div>
 
@@ -103,6 +103,7 @@ Most job search tools make you juggle 10 browser tabs. Landit replaces all of th
 
 - **Live Interviews** — Voice + video via Gemini Live API
 - **Text Practice** — Behavioral, technical, system design, coding
+- **Session Recording** — Record live interviews, on-device transcription, AI analysis with scoring, searchable transcripts with labels, playback with synchronized captions
 - **Analytics** — Performance tracking over time
 - **Career Coach** — AI chat with full profile context
 
@@ -164,6 +165,52 @@ Most job search tools make you juggle 10 browser tabs. Landit replaces all of th
 | **Groq**          | Yes       | Ultra-fast inference                | [console.groq.com](https://console.groq.com/keys)           |
 
 Keys are stored in **macOS Keychain** — never sent anywhere except the provider.
+
+### Getting Your API Keys
+
+<details>
+<summary><strong>Google Gemini (Recommended — Free)</strong></summary>
+
+1. Visit [Google AI Studio](https://aistudio.google.com/apikey)
+2. Sign in with your Google account
+3. Click "Create API Key" → select a project
+4. Copy the key → paste in Landit Settings
+5. Free tier: 60 requests/minute, more than enough
+
+</details>
+
+<details>
+<summary><strong>OpenAI</strong></summary>
+
+1. Visit [OpenAI Platform](https://platform.openai.com/api-keys)
+2. Create account → add billing (pay-as-you-go)
+3. Click "Create new secret key" → name it "Landit"
+4. Copy immediately (shown only once)
+5. Tip: GPT-4o-mini is cheapest and works great
+
+</details>
+
+<details>
+<summary><strong>Anthropic</strong></summary>
+
+1. Visit [Anthropic Console](https://console.anthropic.com/)
+2. Create account → add $5 credit minimum
+3. Settings → API Keys → "Create Key"
+4. Copy → paste in Landit Settings
+5. Claude Sonnet recommended for coaching
+
+</details>
+
+<details>
+<summary><strong>Groq (Free)</strong></summary>
+
+1. Visit [Groq Console](https://console.groq.com/keys)
+2. Create account (free)
+3. Click "Create API Key" → copy
+4. Paste in Landit Settings
+5. Fastest inference, generous free tier
+
+</details>
 
 ---
 
