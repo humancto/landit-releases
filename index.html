@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landit — AI-Powered Career Command Center for macOS</title>
+    <meta name="description" content="Landit is a macOS career command center. Discover jobs from 7+ sources, practice live AI interviews, track applications, and land your next role. 100% local, privacy-first.">
+    <meta name="theme-color" content="#0D0F12">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0D0F12;
+            --bg-raised: #1A1D23;
+            --bg-hover: #22262E;
+            --blue: #4A9EFF;
+            --green: #34D399;
+            --purple: #A78BFA;
+            --orange: #FB923C;
+            --red: #F87171;
+            --yellow: #FBBF24;
+            --text-primary: #F1F5F9;
+            --text-secondary: #94A3B8;
+            --text-tertiary: #64748B;
+            --border: #2D3748;
+            --border-light: #374151;
+            --radius: 16px;
+            --radius-sm: 10px;
+            --max-w: 1120px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ---- NAV ---- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 0 24px;
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            background: rgba(13, 15, 18, 0.8);
+            border-bottom: 1px solid rgba(45, 55, 72, 0.5);
+        }
+
+        .nav-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-cta {
+            padding: 8px 20px;
+            background: var(--blue);
+            color: var(--bg) !important;
+            border-radius: 8px;
+            font-weight: 600 !important;
+            transition: opacity 0.2s, transform 0.2s !important;
+        }
+
+        .nav-cta:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 640px) {
+            .nav-links a:not(.nav-cta) { display: none; }
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 160px 24px 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 600px;
+            background: radial-gradient(ellipse at center, rgba(74, 158, 255, 0.08) 0%, rgba(167, 139, 250, 0.04) 40%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(74, 158, 255, 0.1);
+            border: 1px solid rgba(74, 158, 255, 0.2);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--blue);
+            margin-bottom: 32px;
+        }
+
+        .hero-badge svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 80px);
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.05;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 50%, var(--green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: clamp(17px, 2.5vw, 20px);
+            color: var(--text-secondary);
+            max-width: 580px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            background: var(--blue);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(74, 158, 255, 0.3);
+        }
+
+        .btn-primary svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 28px;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 15px;
+            font-weight: 500;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-tertiary);
+            color: var(--text-primary);
+        }
+
+        .hero-meta {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--text-tertiary);
+        }
+
+        .hero-meta svg {
+            width: 14px;
+            height: 14px;
+            opacity: 0.6;
+        }
+
+        /* ---- SECTIONS ---- */
+        section {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 100px 24px;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--blue);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 5vw, 44px);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+            line-height: 1.15;
+        }
+
+        .section-desc {
+            font-size: 17px;
+            color: var(--text-secondary);
+            max-width: 560px;
+            line-height: 1.7;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-header .section-desc {
+            margin: 0 auto;
+        }
+
+        /* ---- FEATURES GRID ---- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .feature-card {
+            background: var(--bg-raised);
+            padding: 36px 28px;
+            transition: background 0.2s;
+            position: relative;
+        }
+
+        .feature-card:hover {
+            background: var(--bg-hover);
+        }
+
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .feature-icon.blue { background: rgba(74, 158, 255, 0.12); color: var(--blue); }
+        .feature-icon.green { background: rgba(52, 211, 153, 0.12); color: var(--green); }
+        .feature-icon.purple { background: rgba(167, 139, 250, 0.12); color: var(--purple); }
+        .feature-icon.orange { background: rgba(251, 146, 60, 0.12); color: var(--orange); }
+        .feature-icon.red { background: rgba(248, 113, 113, 0.12); color: var(--red); }
+        .feature-icon.yellow { background: rgba(251, 191, 36, 0.12); color: var(--yellow); }
+
+        .feature-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        @media (max-width: 900px) {
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 540px) {
+            .features-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ---- HOW IT WORKS ---- */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            counter-reset: step;
+        }
+
+        .step {
+            position: relative;
+            padding: 40px 32px;
+            background: var(--bg-raised);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            counter-increment: step;
+            transition: border-color 0.2s;
+        }
+
+        .step:hover {
+            border-color: var(--blue);
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(74, 158, 255, 0.12);
+            color: var(--blue);
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .step h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .step p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        @media (max-width: 768px) {
+            .steps { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+        }
+
+        /* ---- PROVIDERS ---- */
+        .providers-section {
+            text-align: center;
+        }
+
+        .providers-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .provider-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 20px 28px;
+            background: var(--bg-raised);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            min-width: 200px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .provider-card:hover {
+            border-color: var(--border-light);
+            transform: translateY(-2px);
+        }
+
+        .provider-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .provider-card .provider-name {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .provider-card .provider-desc {
+            font-size: 12px;
+            color: var(--text-tertiary);
+            margin-top: 2px;
+        }
+
+        .byok-note {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: rgba(52, 211, 153, 0.08);
+            border: 1px solid rgba(52, 211, 153, 0.15);
+            border-radius: 100px;
+            font-size: 14px;
+            color: var(--green);
+            font-weight: 500;
+        }
+
+        /* ---- PRIVACY ---- */
+        .privacy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .privacy-card {
+            padding: 36px 28px;
+            background: var(--bg-raised);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            text-align: center;
+        }
+
+        .privacy-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            background: rgba(52, 211, 153, 0.1);
+        }
+
+        .privacy-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .privacy-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        @media (max-width: 768px) {
+            .privacy-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+        }
+
+        /* ---- FINAL CTA ---- */
+        .final-cta {
+            text-align: center;
+            padding: 80px 24px 120px;
+        }
+
+        .final-cta-box {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 64px 48px;
+            background: linear-gradient(135deg, rgba(74, 158, 255, 0.06), rgba(167, 139, 250, 0.06));
+            border: 1px solid rgba(74, 158, 255, 0.15);
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--blue), transparent);
+        }
+
+        .final-cta-box h2 {
+            font-size: clamp(28px, 4vw, 36px);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .final-cta-box p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .sys-req {
+            margin-top: 20px;
+            font-size: 13px;
+            color: var(--text-tertiary);
+        }
+
+        /* ---- FOOTER ---- */
+        footer {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 32px 24px 48px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-left {
+            font-size: 14px;
+            color: var(--text-tertiary);
+        }
+
+        .footer-left a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-left a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .footer-right a {
+            color: var(--text-tertiary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-right a:hover {
+            color: var(--text-primary);
+        }
+
+        /* ---- APP PREVIEW ---- */
+        .hero-preview {
+            max-width: 1000px;
+            margin: 64px auto 0;
+            position: relative;
+        }
+
+        .hero-preview img {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(74, 158, 255, 0.1);
+        }
+
+        .hero-preview::after {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 80px;
+            background: radial-gradient(ellipse at center, rgba(74, 158, 255, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* ---- SCREENSHOT TABS ---- */
+        .screenshot-showcase {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 80px 24px 100px;
+        }
+
+        .screenshot-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 32px;
+            background: var(--bg-raised);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 4px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .screenshot-tab {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .screenshot-tab:hover {
+            color: var(--text-primary);
+        }
+
+        .screenshot-tab.active {
+            background: rgba(74, 158, 255, 0.15);
+            color: var(--blue);
+        }
+
+        .screenshot-frame {
+            position: relative;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            box-shadow: 0 16px 64px rgba(0, 0, 0, 0.4);
+        }
+
+        .screenshot-frame img {
+            width: 100%;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        .screenshot-frame img.hidden {
+            display: none;
+        }
+
+        .screenshot-caption {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-tertiary);
+        }
+
+        @media (max-width: 640px) {
+            .screenshot-tabs {
+                flex-wrap: wrap;
+                width: 100%;
+            }
+            .screenshot-tab {
+                flex: 1;
+                min-width: 80px;
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+        }
+
+        /* ---- DIVIDER ---- */
+        .divider {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ---- ANIMATIONS ---- */
+        @media (prefers-reduced-motion: no-preference) {
+            .fade-in {
+                opacity: 0;
+                transform: translateY(24px);
+                transition: opacity 0.6s ease, transform 0.6s ease;
+            }
+
+            .fade-in.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in { opacity: 1; transform: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+    <div class="nav-inner">
+        <span class="nav-logo">Landit</span>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#privacy">Privacy</a>
+            <a href="https://github.com/humancto/landit-releases" target="_blank">GitHub</a>
+            <a href="https://github.com/humancto/landit-releases/releases/latest" class="nav-cta">Download</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+    <div class="hero-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        macOS Native App
+    </div>
+    <h1>Your AI-Powered<br><span class="gradient">Career Command Center</span></h1>
+    <p class="hero-sub">
+        Discover jobs from 7+ sources, ace AI mock interviews, track every application, and land your next role. All from one beautiful Mac app.
+    </p>
+    <div class="hero-actions">
+        <a href="https://github.com/humancto/landit-releases/releases/latest" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            Download for Mac
+        </a>
+        <a href="https://github.com/humancto/landit-releases" target="_blank" class="btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            View on GitHub
+        </a>
+    </div>
+    <div class="hero-meta">
+        <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            macOS 14+ Sonoma
+        </span>
+        <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            100% Local Data
+        </span>
+        <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+            Bring Your Own Keys
+        </span>
+        <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Free &amp; Open Source
+        </span>
+    </div>
+    <div class="hero-preview fade-in">
+        <img src="screenshots/dashboard.png" alt="Landit Dashboard — your career command center at a glance" loading="eager">
+    </div>
+</header>
+
+<!-- Screenshot Showcase -->
+<div class="screenshot-showcase fade-in">
+    <div class="section-header">
+        <div class="section-label">See It In Action</div>
+        <h2 class="section-title">Built for serious job seekers</h2>
+        <p class="section-desc">Every screen designed to move you closer to your next role.</p>
+    </div>
+
+    <div class="screenshot-tabs" role="tablist">
+        <button class="screenshot-tab active" data-target="ss-jobs" role="tab">Jobs</button>
+        <button class="screenshot-tab" data-target="ss-discovery" role="tab">Discovery</button>
+        <button class="screenshot-tab" data-target="ss-practice" role="tab">Interviews</button>
+        <button class="screenshot-tab" data-target="ss-analytics" role="tab">Analytics</button>
+        <button class="screenshot-tab" data-target="ss-coach" role="tab">Coach</button>
+        <button class="screenshot-tab" data-target="ss-settings" role="tab">Settings</button>
+    </div>
+
+    <div class="screenshot-frame">
+        <img id="ss-jobs" src="screenshots/jobs.png" alt="AI-scored job listings from 7+ sources" loading="lazy">
+        <img id="ss-discovery" src="screenshots/discovery.png" alt="Discovery source configuration" class="hidden" loading="lazy">
+        <img id="ss-practice" src="screenshots/practice.png" alt="AI mock interview setup — text, audio, or video" class="hidden" loading="lazy">
+        <img id="ss-analytics" src="screenshots/analytics.png" alt="Interview performance analytics and score trends" class="hidden" loading="lazy">
+        <img id="ss-coach" src="screenshots/coach.png" alt="AI career coach chat" class="hidden" loading="lazy">
+        <img id="ss-settings" src="screenshots/settings.png" alt="AI provider configuration and profile settings" class="hidden" loading="lazy">
+    </div>
+    <p class="screenshot-caption" id="ss-caption">AI-scored job listings from 7+ sources — 722 matches and counting</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- Features -->
+<section id="features" class="fade-in">
+    <div class="section-header">
+        <div class="section-label">Features</div>
+        <h2 class="section-title">Everything you need to land the job</h2>
+        <p class="section-desc">Eight powerful modules working together. From finding the right opportunity to acing the final interview.</p>
+    </div>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon blue">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            </div>
+            <h3>AI Job Discovery</h3>
+            <p>Search 7+ sources simultaneously: Indeed, LinkedIn, Greenhouse, Lever, RemoteOK, HN Who's Hiring, Adzuna, and more. AI scores every job 0-100 against your resume.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon purple">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+            </div>
+            <h3>Live Mock Interviews</h3>
+            <p>Voice-powered practice with Gemini Live API. Technical, behavioral, and system design interviews with real-time AI feedback and performance analytics.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon green">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <h3>Pipeline Tracking</h3>
+            <p>Kanban board to manage applications from discovery to offer. Track status, follow-up dates, interview rounds, and compare multiple offers side by side.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon orange">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h3>Career Coach</h3>
+            <p>AI-powered career guidance that analyzes your profile, identifies skill gaps, and provides actionable improvement plans tailored to your target roles.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon red">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <h3>Resume &amp; Cover Letter</h3>
+            <p>AI analysis of your resume with targeted suggestions. Auto-generated cover letters customized for each position. Skill gap breakdowns for every job.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon blue">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <h3>Market Intelligence</h3>
+            <p>Salary benchmarks, market trends, and competitive analysis. Understand your worth with data-driven insights powered by real market data.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon yellow">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            </div>
+            <h3>Smart Follow-ups</h3>
+            <p>Automatic ghost detection when applications go silent. Timely follow-up reminders so no opportunity falls through the cracks.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon green">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3"/><polyline points="14 2 14 8 20 8"/><path d="M2 15h10"/><path d="M9 18l3-3-3-3"/></svg>
+            </div>
+            <h3>Answer Vault</h3>
+            <p>Save and reuse answers to common application questions. Auto-fill responses across applications to save hours of repetitive typing.</p>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- How It Works -->
+<section id="how-it-works" class="fade-in">
+    <div class="section-header">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">Three steps to your next role</h2>
+        <p class="section-desc">Set up once, then let Landit do the heavy lifting.</p>
+    </div>
+
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3>Configure</h3>
+            <p>Upload your resume, set target roles and locations, and add your AI provider API keys. Landit supports Gemini, OpenAI, Anthropic, and Groq.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3>Discover</h3>
+            <p>Landit searches 7+ job sources simultaneously, deduplicates results, and scores every job against your profile. The best matches rise to the top.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3>Land It</h3>
+            <p>Track applications on a Kanban board, practice with AI mock interviews, generate cover letters, and get timely follow-up reminders. Close the deal.</p>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- AI Providers -->
+<section class="providers-section fade-in">
+    <div class="section-header">
+        <div class="section-label">AI Providers</div>
+        <h2 class="section-title">Your models, your choice</h2>
+        <p class="section-desc">Bring your own API keys. Landit works with all major AI providers so you stay in control of costs and model selection.</p>
+    </div>
+
+    <div class="providers-grid">
+        <div class="provider-card">
+            <div class="provider-logo" style="background: rgba(74, 158, 255, 0.12); color: var(--blue);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <div>
+                <div class="provider-name">Gemini</div>
+                <div class="provider-desc">Live voice interviews</div>
+            </div>
+        </div>
+        <div class="provider-card">
+            <div class="provider-logo" style="background: rgba(52, 211, 153, 0.12); color: var(--green);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4m0 12v4m-7.07-15.07l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+            </div>
+            <div>
+                <div class="provider-name">OpenAI</div>
+                <div class="provider-desc">GPT-4 scoring &amp; analysis</div>
+            </div>
+        </div>
+        <div class="provider-card">
+            <div class="provider-logo" style="background: rgba(167, 139, 250, 0.12); color: var(--purple);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <div>
+                <div class="provider-name">Anthropic</div>
+                <div class="provider-desc">Claude career coaching</div>
+            </div>
+        </div>
+        <div class="provider-card">
+            <div class="provider-logo" style="background: rgba(251, 146, 60, 0.12); color: var(--orange);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div>
+                <div class="provider-name">Groq</div>
+                <div class="provider-desc">Ultra-fast inference</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="byok-note">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+        Keys stored securely in macOS Keychain &mdash; never sent anywhere except the provider
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Privacy -->
+<section id="privacy" class="fade-in">
+    <div class="section-header">
+        <div class="section-label">Privacy First</div>
+        <h2 class="section-title">Your data never leaves your Mac</h2>
+        <p class="section-desc">Landit is built local-first. No accounts, no cloud, no tracking. Your career data stays where it belongs.</p>
+    </div>
+
+    <div class="privacy-grid">
+        <div class="privacy-card">
+            <div class="privacy-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            </div>
+            <h3>Local SQLite Database</h3>
+            <p>All your data lives in a SQLite database on your Mac. No servers, no cloud storage, no external dependencies.</p>
+        </div>
+        <div class="privacy-card">
+            <div class="privacy-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>No Account Required</h3>
+            <p>Download, open, and start using. No sign-up, no email, no friction. Your career search is nobody's business.</p>
+        </div>
+        <div class="privacy-card">
+            <div class="privacy-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <h3>Opt-in Analytics Only</h3>
+            <p>Analytics is completely optional and off by default. When enabled, it only sends anonymous usage patterns. Never your personal data.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final-cta fade-in">
+    <div class="final-cta-box">
+        <h2>Ready to land your next role?</h2>
+        <p>Download Landit and take control of your job search.</p>
+        <a href="https://github.com/humancto/landit-releases/releases/latest" class="btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            Download for Mac
+        </a>
+        <p class="sys-req">Requires macOS 14 (Sonoma) or later &middot; Apple Silicon &amp; Intel</p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-left">
+        Built by <a href="https://humancto.com" target="_blank">HumanCTO</a>
+    </div>
+    <div class="footer-right">
+        <a href="https://github.com/humancto/landit-releases" target="_blank">GitHub</a>
+        <a href="https://github.com/humancto/landit-releases/releases" target="_blank">Releases</a>
+    </div>
+</footer>
+
+<script>
+    // Intersection Observer for fade-in animations
+    (function() {
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(function(el) {
+            observer.observe(el);
+        });
+    })();
+
+    // Screenshot tab switcher
+    (function() {
+        var captions = {
+            'ss-jobs': 'AI-scored job listings from 7+ sources \u2014 722 matches and counting',
+            'ss-discovery': '8 active sources with per-company slug configuration',
+            'ss-practice': 'AI mock interviews \u2014 text, audio, or audio+video modes',
+            'ss-analytics': 'Track interview performance with score trends and category breakdowns',
+            'ss-coach': '24/7 AI career coach that knows your profile and interview history',
+            'ss-settings': 'Plug in any AI provider \u2014 Gemini, OpenAI, Anthropic, or Groq'
+        };
+        var tabs = document.querySelectorAll('.screenshot-tab');
+        var images = document.querySelectorAll('.screenshot-frame img');
+        var caption = document.getElementById('ss-caption');
+
+        tabs.forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                var target = this.getAttribute('data-target');
+                tabs.forEach(function(t) { t.classList.remove('active'); });
+                this.classList.add('active');
+                images.forEach(function(img) {
+                    if (img.id === target) {
+                        img.classList.remove('hidden');
+                    } else {
+                        img.classList.add('hidden');
+                    }
+                });
+                if (caption && captions[target]) {
+                    caption.textContent = captions[target];
+                }
+            });
+        });
+    })();
+</script>
+
+</body>
+</html>
