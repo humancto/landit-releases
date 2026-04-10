@@ -136,6 +136,19 @@
         .fade-in-delay-3 { transition-delay: 0.3s; }
         .fade-in-delay-4 { transition-delay: 0.4s; }
 
+        /* Hero elements animate in immediately on page load via CSS keyframes */
+        .hero .fade-in {
+            animation: heroFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .hero .fade-in-delay-1 { animation-delay: 0.1s; }
+        .hero .fade-in-delay-2 { animation-delay: 0.2s; }
+        .hero .fade-in-delay-3 { animation-delay: 0.3s; }
+        .hero .fade-in-delay-4 { animation-delay: 0.5s; }
+        @keyframes heroFadeIn {
+            from { opacity: 0; transform: translateY(32px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         /* Container */
         .container {
             max-width: 1200px;
@@ -1202,16 +1215,22 @@
     </footer>
 
     <script>
-        // Scroll-triggered fade-in animations
+        // Scroll-triggered fade-in animations (hero handled by CSS @keyframes)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        document.querySelectorAll('.fade-in').forEach(el => {
+            // Skip hero elements — they use CSS keyframe animation
+            if (!el.closest('.hero')) {
+                observer.observe(el);
+            }
+        });
 
         // Screenshot showcase tabs
         const tabs = document.querySelectorAll('.showcase-tab');
