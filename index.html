@@ -700,6 +700,36 @@
             margin: 0 auto;
         }
 
+        /* Install note */
+        .install-note {
+            background: rgba(59, 130, 246, 0.06);
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            max-width: 680px;
+            margin: 40px auto 0;
+        }
+        .install-note h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-2);
+            margin-bottom: 10px;
+        }
+        .install-note p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin: 0;
+        }
+        .install-note code {
+            background: rgba(255,255,255,0.06);
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-family: 'SF Mono', SFMono-Regular, Consolas, monospace;
+            color: var(--text);
+        }
+
         /* AI providers */
         .providers-grid {
             display: grid;
@@ -1097,7 +1127,7 @@
                 <div class="timeline-step">
                     <div class="timeline-number">1</div>
                     <h3>Download &amp; Setup</h3>
-                    <p>Install Landit on your Mac. Add your API keys for whichever AI providers you prefer. That's it.</p>
+                    <p>Download the <code>.zip</code> from GitHub Releases, unzip, and drag Landit to Applications. On first launch, <strong>right-click the app &rarr; Open</strong> (macOS requires this for apps outside the App Store). Add your AI API keys and you're set.</p>
                 </div>
                 <div class="timeline-step">
                     <div class="timeline-number">2</div>
@@ -1109,6 +1139,12 @@
                     <h3>Practice &amp; Land</h3>
                     <p>Run AI mock interviews with voice and video. Get coached. Walk into real interviews with confidence.</p>
                 </div>
+            </div>
+            <div class="install-note fade-in fade-in-delay-2">
+                <h4>First launch on macOS</h4>
+                <p>Since Landit is distributed outside the App Store, macOS Gatekeeper may block it on first open. To fix this:<br>
+                <strong>Right-click Landit.app &rarr; Open</strong> &mdash; then click "Open" in the dialog. You only need to do this once.<br>
+                Alternatively, run <code>xattr -cr /Applications/Landit.app</code> in Terminal before opening.</p>
             </div>
         </div>
     </section>
