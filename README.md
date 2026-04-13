@@ -8,7 +8,7 @@
 
 Find jobs. Ace interviews. Track everything. Land the offer.
 
-[![Download Latest](https://img.shields.io/github/v/release/humancto/landit-releases?label=Download%20v1.1.0&style=for-the-badge&color=4A9EFF&logo=apple&logoColor=white)](https://github.com/humancto/landit-releases/releases/latest)
+[![Download Latest](https://img.shields.io/github/v/release/humancto/landit-releases?label=Download%20v1.2.0&style=for-the-badge&color=4A9EFF&logo=apple&logoColor=white)](https://github.com/humancto/landit-releases/releases/latest)
 &nbsp;
 [![macOS 14+](https://img.shields.io/badge/macOS-14%2B%20Sonoma-111827?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/humancto/landit-releases/releases/latest)
 &nbsp;
@@ -22,7 +22,7 @@ Find jobs. Ace interviews. Track everything. Land the offer.
 
 ---
 
-**7+ Job Sources** &bull; **Live AI Interviews** &bull; **Session Recording** &bull; **Pipeline Tracking** &bull; **Career Coach** &bull; **100% Local**
+**7+ Job Sources** &bull; **Live AI Interviews** &bull; **Video Recording Studio** &bull; **Context Graph** &bull; **Pipeline Tracking** &bull; **Career Coach** &bull; **100% Local**
 
 </div>
 
@@ -94,6 +94,7 @@ Most job search tools make you juggle 10 browser tabs. Landit replaces all of th
 
 - **Job Discovery** — 7+ source aggregation with AI scoring
 - **Discovery Config** — Per-source settings, company slugs, role typeahead
+- **Context Graph** — Interactive force-directed graph showing how companies, contacts, skills, and applications connect. Obsidian-style visualization with LLM-exportable context
 - **Market Data** — Salary benchmarks and market trends
 
 </td>
@@ -103,7 +104,8 @@ Most job search tools make you juggle 10 browser tabs. Landit replaces all of th
 
 - **Live Interviews** — Voice + video via Gemini Live API
 - **Text Practice** — Behavioral, technical, system design, coding
-- **Session Recording** — Record live interviews, on-device transcription, AI analysis with scoring, searchable transcripts with labels, playback with synchronized captions
+- **Video Recording Studio** — Loom-style recorder with camera, screen, or both. On-device transcription, AI analysis with scoring, searchable transcripts, playback with synchronized captions
+- **Session Recording** — Record live interviews with audio capture and AI analysis
 - **Analytics** — Performance tracking over time
 - **Career Coach** — AI chat with full profile context
 
@@ -140,7 +142,7 @@ Most job search tools make you juggle 10 browser tabs. Landit replaces all of th
 ## Quick Start
 
 ```
-1. Download Landit-v1.1.0.dmg from Releases
+1. Download Landit-v1.2.0.dmg from Releases
 2. Open DMG → drag Landit to Applications
 3. Launch → onboarding wizard guides you
 4. Add an AI API key in Settings (Gemini recommended)
