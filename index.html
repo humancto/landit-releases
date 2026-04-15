@@ -37,7 +37,7 @@
         "url": "https://humancto.github.io/landit-releases/",
         "downloadUrl": "https://github.com/humancto/landit-releases/releases/latest",
         "screenshot": "https://humancto.github.io/landit-releases/screenshots/dashboard.png",
-        "softwareVersion": "1.2.0",
+        "softwareVersion": "2.2.0",
         "author": {
             "@type": "Organization",
             "name": "HumanCTO",
@@ -58,7 +58,8 @@
             "AI career coaching",
             "Resume and cover letter analysis",
             "Interview performance analytics",
-            "Multi-provider AI support (Gemini, OpenAI, Anthropic, Groq)"
+            "Multi-provider AI support (Gemini, OpenAI, Anthropic, Groq, Ollama, LM Studio)",
+            "Local AI — run models on your Mac, no API key, no cloud, no cost"
         ]
     }
     </script>
@@ -905,7 +906,7 @@
             }
             .timeline-line { display: none; }
             .providers-grid { grid-template-columns: 1fr 1fr; }
-            .privacy-grid { grid-template-columns: 1fr; }
+            .privacy-grid { grid-template-columns: 1fr !important; }
             .cta-box { padding: 48px 24px; }
             section { padding: 64px 0; }
         }
@@ -958,7 +959,7 @@
                 <span class="hero-gradient-text">Your career,<br>under your control</span>
             </h1>
             <p class="fade-in fade-in-delay-2">
-                Discover jobs from 7+ sources, practice with live AI interviews, record Loom-style videos, visualize your career graph, track every application, and land your next role. All on your Mac. 100% local.
+                Discover jobs from 7+ sources, practice with live AI interviews, record Loom-style videos, and track every application. Run AI locally with Ollama &mdash; no API keys, no cloud, no cost. Privacy first. All on your Mac.
             </p>
             <div class="hero-actions fade-in fade-in-delay-3">
                 <a href="https://github.com/humancto/landit-releases/releases/latest" class="btn-primary">
@@ -992,7 +993,7 @@
                 <div class="stat-label">Sources</div>
             </div>
             <div class="stat-item">
-                <div class="stat-value">4</div>
+                <div class="stat-value">6</div>
                 <div class="stat-label">AI Providers</div>
             </div>
             <div class="stat-item">
@@ -1001,7 +1002,7 @@
             </div>
             <div class="stat-item">
                 <div class="stat-value">100%</div>
-                <div class="stat-label">Local</div>
+                <div class="stat-label">Privacy First</div>
             </div>
         </div>
         <div class="divider"></div>
@@ -1017,20 +1018,13 @@
             </div>
             <div class="fade-in fade-in-delay-1">
                 <div class="showcase-tabs" role="tablist">
-                    <button class="showcase-tab active" data-tab="dashboard" data-caption="Your career command center — everything at a glance.">Dashboard</button>
-                    <button class="showcase-tab" data-tab="jobs" data-caption="Browse and filter thousands of jobs from LinkedIn, Indeed, Greenhouse, Lever, and more.">Jobs</button>
+                    <button class="showcase-tab active" data-tab="jobs" data-caption="Browse and filter thousands of jobs from LinkedIn, Indeed, Greenhouse, Lever, and more.">Jobs</button>
                     <button class="showcase-tab" data-tab="discovery" data-caption="AI-powered job discovery surfaces roles you'd never find on your own.">Discovery</button>
                     <button class="showcase-tab" data-tab="pipeline" data-caption="Kanban-style pipeline tracks every application from saved to offer.">Pipeline</button>
                     <button class="showcase-tab" data-tab="practice" data-caption="Live AI mock interviews with voice, video, and real-time feedback.">Interviews</button>
-                    <button class="showcase-tab" data-tab="library" data-caption="Review recorded interview sessions with screen and camera playback.">Library</button>
-                    <button class="showcase-tab" data-tab="sessions" data-caption="Full session history with transcripts, tags, and performance tracking.">Sessions</button>
                     <button class="showcase-tab" data-tab="analytics" data-caption="Detailed analytics on your interview performance over time.">Analytics</button>
                     <button class="showcase-tab" data-tab="coach" data-caption="AI career coach gives personalized advice based on your profile.">Coach</button>
-                    <button class="showcase-tab" data-tab="contacts" data-caption="Track recruiters, hiring managers, and referrals across your network.">Contacts</button>
-                    <button class="showcase-tab" data-tab="documents" data-caption="AI-powered resume analysis, cover letters, LinkedIn scoring, and contract scanning.">Documents</button>
-                    <button class="showcase-tab" data-tab="answer-vault" data-caption="Your one-time setup for Assist Apply — auto-fills the boring fields.">Answer Vault</button>
-                    <button class="showcase-tab" data-tab="market-data" data-caption="Salary benchmarks and market insights from your interview data.">Market Data</button>
-                    <button class="showcase-tab" data-tab="settings" data-caption="Configure AI providers, sources, and preferences your way.">Settings</button>
+                    <button class="showcase-tab" data-tab="settings" data-caption="Cloud and local AI providers. Run Ollama models on your Mac — no API keys, no cloud, no cost.">Settings</button>
                 </div>
             </div>
             <div class="showcase-display fade-in fade-in-delay-2">
@@ -1042,23 +1036,16 @@
                         <span class="window-title">Landit</span>
                     </div>
                     <div class="showcase-images">
-                        <img class="showcase-img active" src="screenshots/dashboard.png" alt="Dashboard" data-tab="dashboard" loading="eager">
-                        <img class="showcase-img" src="screenshots/jobs.png" alt="Jobs" data-tab="jobs" loading="lazy">
+                        <img class="showcase-img active" src="screenshots/jobs.png" alt="Jobs" data-tab="jobs" loading="lazy">
                         <img class="showcase-img" src="screenshots/discovery.png" alt="Discovery" data-tab="discovery" loading="lazy">
                         <img class="showcase-img" src="screenshots/pipeline.png" alt="Pipeline" data-tab="pipeline" loading="lazy">
                         <img class="showcase-img" src="screenshots/practice.png" alt="Interviews" data-tab="practice" loading="lazy">
-                        <img class="showcase-img" src="screenshots/library.png" alt="Library" data-tab="library" loading="lazy">
-                        <img class="showcase-img" src="screenshots/sessions.png" alt="Sessions" data-tab="sessions" loading="lazy">
                         <img class="showcase-img" src="screenshots/analytics.png" alt="Analytics" data-tab="analytics" loading="lazy">
                         <img class="showcase-img" src="screenshots/coach.png" alt="Coach" data-tab="coach" loading="lazy">
-                        <img class="showcase-img" src="screenshots/contacts.png" alt="Contacts" data-tab="contacts" loading="lazy">
-                        <img class="showcase-img" src="screenshots/documents.png" alt="Documents" data-tab="documents" loading="lazy">
-                        <img class="showcase-img" src="screenshots/answer-vault.png" alt="Answer Vault" data-tab="answer-vault" loading="lazy">
-                        <img class="showcase-img" src="screenshots/market-data.png" alt="Market Data" data-tab="market-data" loading="lazy">
                         <img class="showcase-img" src="screenshots/settings.png" alt="Settings" data-tab="settings" loading="lazy">
                     </div>
                 </div>
-                <p class="showcase-caption">Your career command center — everything at a glance.</p>
+                <p class="showcase-caption">Browse and filter thousands of jobs from LinkedIn, Indeed, Greenhouse, Lever, and more.</p>
             </div>
         </div>
     </section>
@@ -1097,8 +1084,8 @@
                     <div class="bento-icon green">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 00-6 0v4"/><rect x="2" y="9" width="20" height="13" rx="2"/><circle cx="12" cy="16" r="1"/></svg>
                     </div>
-                    <h3>100% Local Storage</h3>
-                    <p>All your data stays on your Mac. SQLite database, zero cloud dependency.</p>
+                    <h3>Privacy First &mdash; Local AI</h3>
+                    <p>Run AI on your Mac with Ollama. All data in local SQLite. No cloud, no cost, no compromise.</p>
                 </div>
                 <div class="bento-card fade-in">
                     <div class="bento-icon orange">
@@ -1159,7 +1146,7 @@
                 <div class="timeline-step">
                     <div class="timeline-number">1</div>
                     <h3>Download &amp; Setup</h3>
-                    <p>Download the <code>.zip</code> from GitHub Releases, unzip, and drag Landit to Applications. On first launch, <strong>right-click the app &rarr; Open</strong> (macOS requires this for apps outside the App Store). Add your AI API keys and you're set.</p>
+                    <p>Download the <code>.dmg</code> from GitHub Releases and drag Landit to Applications. On first launch, <strong>right-click the app &rarr; Open</strong> (macOS requires this for apps outside the App Store). Install <a href="https://ollama.com" target="_blank" style="color: var(--accent-2); text-decoration: none;">Ollama</a> for free local AI, or add cloud API keys &mdash; your choice.</p>
                 </div>
                 <div class="timeline-step">
                     <div class="timeline-number">2</div>
@@ -1186,32 +1173,46 @@
         <div class="container">
             <div class="section-header-center fade-in">
                 <div class="section-label">AI Providers</div>
-                <h2 class="section-heading">Bring your own AI</h2>
-                <p class="section-subheading">Use the models you already pay for. Landit supports all major providers. Keys stay in your macOS Keychain.</p>
+                <h2 class="section-heading">Local first. Cloud when you want.</h2>
+                <p class="section-subheading">Run AI on your Mac with Ollama or LM Studio — free, private, no API key. Or bring your own cloud keys. Your choice.</p>
             </div>
             <div class="providers-grid">
-                <div class="provider-card fade-in">
+                <div class="provider-card fade-in" style="border: 1px solid rgba(124,58,237,0.3); background: rgba(124,58,237,0.06);">
+                    <div class="provider-logo">
+                        <span style="font-size: 28px;">🦙</span>
+                    </div>
+                    <h3>Ollama <span style="font-size: 11px; color: #22C55E; font-weight: 600; vertical-align: middle;">LOCAL</span></h3>
+                    <p>Run Qwen, Gemma, Llama, Phi on your Mac. Free, private, no API key. <a href="https://ollama.com" target="_blank" style="color: var(--accent-2); text-decoration: none; font-weight: 500;">Get Ollama &rarr;</a></p>
+                </div>
+                <div class="provider-card fade-in fade-in-delay-1" style="border: 1px solid rgba(6,182,212,0.3); background: rgba(6,182,212,0.06);">
+                    <div class="provider-logo">
+                        <span style="font-size: 28px;">🧪</span>
+                    </div>
+                    <h3>LM Studio <span style="font-size: 11px; color: #22C55E; font-weight: 600; vertical-align: middle;">LOCAL</span></h3>
+                    <p>GUI for local models. Download, load, and run. Zero config. <a href="https://lmstudio.ai" target="_blank" style="color: var(--accent-2); text-decoration: none; font-weight: 500;">Get LM Studio &rarr;</a></p>
+                </div>
+                <div class="provider-card fade-in fade-in-delay-2">
                     <div class="provider-logo">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M22.2 12c0-1.2-.6-2.4-1.5-3.3.3-1.2.1-2.4-.5-3.5-1.5-.1-2.7.5-3.5 1.3-.9-.3-1.8-.5-2.7-.5s-1.8.2-2.7.5C10.5 5.6 9.3 5 7.8 5.1c-.6 1.1-.8 2.3-.5 3.5C6.4 9.6 5.8 10.8 5.8 12c0 4.1 3 6.3 6.2 6.9v2.1H10v1.5h4V21h-1.8v-2.1c3.2-.6 6.2-2.8 6.2-6.9h-.2z" fill="#E8E8ED"/></svg>
                     </div>
                     <h3>OpenAI</h3>
                     <p>GPT-4o, GPT-4.1, and more. <a href="https://platform.openai.com/api-keys" target="_blank" style="color: var(--accent-2); text-decoration: none; font-weight: 500;">Get key &rarr;</a></p>
                 </div>
-                <div class="provider-card fade-in fade-in-delay-1">
+                <div class="provider-card fade-in fade-in-delay-3">
                     <div class="provider-logo">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#E8E8ED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </div>
                     <h3>Google Gemini</h3>
                     <p>Gemini Pro, Flash, Live API. Free tier. <a href="https://aistudio.google.com/apikey" target="_blank" style="color: var(--accent-2); text-decoration: none; font-weight: 500;">Get key &rarr;</a></p>
                 </div>
-                <div class="provider-card fade-in fade-in-delay-2">
+                <div class="provider-card fade-in">
                     <div class="provider-logo">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M17.5 3.5L12 2 6.5 3.5 4 8.5l2.5 5L12 22l5.5-8.5 2.5-5-2.5-5z" stroke="#E8E8ED" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 8v8M8.5 10.5h7" stroke="#E8E8ED" stroke-width="1.5" stroke-linecap="round"/></svg>
                     </div>
                     <h3>Anthropic</h3>
                     <p>Claude Sonnet, Opus, Haiku. <a href="https://console.anthropic.com/" target="_blank" style="color: var(--accent-2); text-decoration: none; font-weight: 500;">Get key &rarr;</a></p>
                 </div>
-                <div class="provider-card fade-in fade-in-delay-3">
+                <div class="provider-card fade-in fade-in-delay-1">
                     <div class="provider-logo">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#E8E8ED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </div>
@@ -1226,26 +1227,33 @@
     <section id="privacy">
         <div class="container">
             <div class="section-header-center fade-in">
-                <div class="section-label">Privacy</div>
+                <div class="section-label">Privacy First</div>
                 <h2 class="section-heading">Your data never leaves your Mac</h2>
-                <p class="section-subheading">No accounts. No tracking. No cloud. Landit is local-first by design.</p>
+                <p class="section-subheading">No accounts. No tracking. No cloud. Even the AI runs on your machine.</p>
             </div>
-            <div class="privacy-grid">
-                <div class="privacy-card fade-in">
+            <div class="privacy-grid" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="privacy-card fade-in" style="border: 1px solid rgba(124,58,237,0.25); background: rgba(124,58,237,0.04);">
+                    <div class="privacy-icon">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <h3>Local AI &mdash; On Your Mac</h3>
+                    <p>Run Ollama or LM Studio models directly on your hardware. Job scoring, resume analysis, career coaching &mdash; all without sending a single byte to the cloud. Zero cost. Total privacy.</p>
+                </div>
+                <div class="privacy-card fade-in fade-in-delay-1">
                     <div class="privacy-icon">
                         <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
                     </div>
                     <h3>Local SQLite Database</h3>
                     <p>Everything is stored in a SQLite database on your machine. Your job data, interview history, and preferences never touch a server.</p>
                 </div>
-                <div class="privacy-card fade-in fade-in-delay-1">
+                <div class="privacy-card fade-in fade-in-delay-2">
                     <div class="privacy-icon">
                         <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                     </div>
                     <h3>No Account Required</h3>
                     <p>No sign-up, no email, no authentication. Download and start using it immediately. Zero friction.</p>
                 </div>
-                <div class="privacy-card fade-in fade-in-delay-2">
+                <div class="privacy-card fade-in fade-in-delay-3">
                     <div class="privacy-icon">
                         <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                     </div>
