@@ -8,7 +8,7 @@
 
 Find jobs. Ace interviews. Track everything. Land the offer.
 
-[![Download Latest](https://img.shields.io/github/v/release/humancto/landit-releases?label=Download%20v1.2.0&style=for-the-badge&color=4A9EFF&logo=apple&logoColor=white)](https://github.com/humancto/landit-releases/releases/latest)
+[![Download Latest](https://img.shields.io/github/v/release/humancto/landit-releases?label=Download&style=for-the-badge&color=4A9EFF&logo=apple&logoColor=white)](https://github.com/humancto/landit-releases/releases/latest)
 &nbsp;
 [![macOS 14+](https://img.shields.io/badge/macOS-14%2B%20Sonoma-111827?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/humancto/landit-releases/releases/latest)
 &nbsp;
@@ -18,11 +18,11 @@ Find jobs. Ace interviews. Track everything. Land the offer.
 [![Release Date](https://img.shields.io/github/release-date/humancto/landit-releases?style=flat-square&color=34D399&label=Updated)](https://github.com/humancto/landit-releases/releases)
 [![Downloads](https://img.shields.io/github/downloads/humancto/landit-releases/total?style=flat-square&color=A78BFA&label=Downloads)](https://github.com/humancto/landit-releases/releases)
 [![Swift](https://img.shields.io/badge/Swift-5.9-F05138?style=flat-square&logo=swift&logoColor=white)]()
-[![AI Providers](https://img.shields.io/badge/AI-Gemini%20%7C%20OpenAI%20%7C%20Anthropic%20%7C%20Groq-8B5CF6?style=flat-square)]()
+[![AI Providers](https://img.shields.io/badge/AI-Ollama%20%7C%20LM%20Studio%20%7C%20Gemini%20%7C%20OpenAI%20%7C%20Anthropic%20%7C%20Groq-8B5CF6?style=flat-square)]()
 
 ---
 
-**7+ Job Sources** &bull; **Live AI Interviews** &bull; **Video Recording Studio** &bull; **Context Graph** &bull; **Pipeline Tracking** &bull; **Career Coach** &bull; **100% Local**
+**Privacy First** &bull; **Local AI (Ollama)** &bull; **7+ Job Sources** &bull; **Live AI Interviews** &bull; **Video Recording** &bull; **Pipeline Tracking** &bull; **Career Coach**
 
 </div>
 
@@ -32,9 +32,9 @@ Find jobs. Ace interviews. Track everything. Land the offer.
 
 ## Why Landit?
 
-Most job search tools make you juggle 10 browser tabs. Landit replaces all of them with one native Mac app that works offline, keeps your data local, and uses AI to automate the tedious parts.
+Most job search tools make you juggle 10 browser tabs and send your data to the cloud. Landit replaces all of them with one native Mac app that runs AI locally on your hardware — no API keys required, no cloud dependency, no cost.
 
-> **Discover** jobs from Indeed, LinkedIn, Greenhouse, Lever, Ashby, RemoteOK, HN, and Adzuna in one search. **Score** every match against your resume. **Practice** with live AI interviews. **Track** your pipeline. **Land** the offer.
+> **Privacy first.** Run AI with [Ollama](https://ollama.com) on your Mac — job scoring, resume analysis, and career coaching never leave your machine. **Discover** jobs from 7+ sources. **Score** every match against your resume. **Practice** with live AI interviews. **Track** your pipeline. **Land** the offer.
 
 ---
 
@@ -76,9 +76,9 @@ Most job search tools make you juggle 10 browser tabs. Landit replaces all of th
 
 ![Analytics](screenshots/analytics.png)
 
-### Multi-Provider AI
+### Local AI & Multi-Provider Settings
 
-> Plug in Gemini, OpenAI, Anthropic, or Groq. Switch models per feature.
+> Run AI locally with Ollama — no API key, no cloud, no cost. Or bring your own cloud keys. Privacy first.
 
 ![Settings](screenshots/settings.png)
 
@@ -142,10 +142,10 @@ Most job search tools make you juggle 10 browser tabs. Landit replaces all of th
 ## Quick Start
 
 ```
-1. Download Landit-v1.2.0.dmg from Releases
+1. Download Landit.dmg from Releases
 2. Open DMG → drag Landit to Applications
 3. Launch → onboarding wizard guides you
-4. Add an AI API key in Settings (Gemini recommended)
+4. Install Ollama (ollama.com) for free local AI — or add a cloud API key
 5. Run your first discovery
 ```
 
@@ -157,21 +157,38 @@ Most job search tools make you juggle 10 browser tabs. Landit replaces all of th
 | Architecture | Apple Silicon or Intel                           |
 | Python       | 3.8+ _(optional, for JobSpy enhanced discovery)_ |
 
-### AI Providers — Bring Your Own Key
+### AI Providers — Local First, Cloud Optional
 
-| Provider          | Free Tier | Best For                            | Get Key                                                     |
-| ----------------- | --------- | ----------------------------------- | ----------------------------------------------------------- |
-| **Google Gemini** | Yes       | Live voice interviews, fast scoring | [aistudio.google.com](https://aistudio.google.com/apikey)   |
-| **OpenAI**        | No        | Deep analysis, cover letters        | [platform.openai.com](https://platform.openai.com/api-keys) |
-| **Anthropic**     | No        | Career coaching, resume review      | [console.anthropic.com](https://console.anthropic.com/)     |
-| **Groq**          | Yes       | Ultra-fast inference                | [console.groq.com](https://console.groq.com/keys)           |
+| Provider          | Type  | Free | Best For                              | Setup                                                       |
+| ----------------- | ----- | ---- | ------------------------------------- | ----------------------------------------------------------- |
+| **Ollama**        | Local | Yes  | Scoring, analysis, coaching — private | [ollama.com](https://ollama.com)                            |
+| **LM Studio**     | Local | Yes  | GUI for local models                  | [lmstudio.ai](https://lmstudio.ai)                          |
+| **Google Gemini** | Cloud | Yes  | Live voice interviews                 | [aistudio.google.com](https://aistudio.google.com/apikey)   |
+| **OpenAI**        | Cloud | No   | Deep analysis, cover letters          | [platform.openai.com](https://platform.openai.com/api-keys) |
+| **Anthropic**     | Cloud | No   | Career coaching, resume review        | [console.anthropic.com](https://console.anthropic.com/)     |
+| **Groq**          | Cloud | Yes  | Ultra-fast cloud inference            | [console.groq.com](https://console.groq.com/keys)           |
 
-Keys are stored in **macOS Keychain** — never sent anywhere except the provider.
+**Local providers** run on your Mac — no API key, no cloud, no cost. Cloud keys are stored in **macOS Keychain**.
 
-### Getting Your API Keys
+### Setting Up Local AI (Recommended)
 
 <details>
-<summary><strong>Google Gemini (Recommended — Free)</strong></summary>
+<summary><strong>Ollama — Free, Private, On-Device</strong></summary>
+
+1. Install from [ollama.com](https://ollama.com) or `brew install ollama`
+2. Start the server: `ollama serve`
+3. Pull a model: `ollama pull qwen3:4b` (2.5GB, runs on any Mac)
+4. Open Landit — Settings will show Ollama with a green dot and detected models
+5. All AI features will automatically prefer your local models
+
+Recommended models: `qwen3.5:4b` (best small), `qwen3:8b` (higher quality), `gemma4:e4b` (Google)
+
+</details>
+
+### Getting Cloud API Keys (Optional)
+
+<details>
+<summary><strong>Google Gemini (Required for Voice Interviews)</strong></summary>
 
 1. Visit [Google AI Studio](https://aistudio.google.com/apikey)
 2. Sign in with your Google account
