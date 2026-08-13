@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Placeholder feed for the public release site. Release CI replaces this file
+  with a Sparkle-signed feed generated from the notarized DMG.
+-->
+<rss version="2.0"
+     xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Landit Releases</title>
+    <link>https://landit-releases.pages.dev/appcast.xml</link>
+    <description>Official Landit updates.</description>
+    <language>en</language>
+  </channel>
+</rss>
