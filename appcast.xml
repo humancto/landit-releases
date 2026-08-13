@@ -9,7 +9,7 @@
             <sparkle:version>2.3.1</sparkle:version>
             <sparkle:shortVersionString>2.3.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/humancto/landit-releases/releases/download/v2.3.1/Landit-v2.3.1.dmg" length="25709748" type="application/octet-stream" sparkle:edSignature="f4KaPKRxMKyIYytrkjQXn/y5r1qs+mUXkIDPKy8k8Dwp8w5BrAJVddjjHm2Zej9Yjsc3g3D4HXC9X2ijoSMaDA=="/>
+            <enclosure url="https://github.com/humancto/landit-releases/releases/download/v2.3.1/Landit-v2.3.1.dmg" length="25719248" type="application/octet-stream" sparkle:edSignature="hIbyKVqRL7yR7u08FNn3FQ8qI6SgwOoEMuhOJEliFadf0B+SgfzqHHAS5ODMJip78GYMr6++tBR7gBgtlgMtBQ=="/>
         </item>
     </channel>
 </rss>
