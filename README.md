@@ -8,13 +8,13 @@
 
 Find jobs. Ace interviews. Track everything. Land the offer.
 
-[![Download Latest](https://img.shields.io/github/v/release/humancto/landit-releases?label=Download&style=for-the-badge&color=4A9EFF&logo=apple&logoColor=white)](https://github.com/humancto/landit-releases/releases/latest)
+[![Download Latest](https://img.shields.io/github/v/release/humancto/landit-releases?label=Download&style=for-the-badge&color=4A9EFF&logo=apple&logoColor=white)](https://humancto.com/downloads/landit/latest)
 &nbsp;
 [![macOS 14+](https://img.shields.io/badge/macOS-14%2B%20Sonoma-111827?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/humancto/landit-releases/releases/latest)
 &nbsp;
 [![GitHub Stars](https://img.shields.io/github/stars/humancto/landit-releases?style=for-the-badge&color=FBBF24&logo=github&logoColor=white)](https://github.com/humancto/landit-releases)
 
-[![Website](https://img.shields.io/badge/Website-landit--releases.pages.dev-4A9EFF?style=flat-square)](https://landit-releases.pages.dev/)
+[![Website](https://img.shields.io/badge/Website-humancto.com%2Flandit-4A9EFF?style=flat-square)](https://humancto.com/landit/)
 [![Release Date](https://img.shields.io/github/release-date/humancto/landit-releases?style=flat-square&color=34D399&label=Updated)](https://github.com/humancto/landit-releases/releases)
 [![Downloads](https://img.shields.io/github/downloads/humancto/landit-releases/total?style=flat-square&color=A78BFA&label=Downloads)](https://github.com/humancto/landit-releases/releases)
 [![Swift](https://img.shields.io/badge/Swift-5.9-F05138?style=flat-square&logo=swift&logoColor=white)]()

@@ -5,11 +5,11 @@
         <item>
             <title>2.3.2</title>
             <pubDate>Thu, 13 Aug 2026 10:29:15 -0700</pubDate>
-            <link>https://landit-releases.pages.dev/</link>
+            <link>https://humancto.com/landit/</link>
             <sparkle:version>2.3.2</sparkle:version>
             <sparkle:shortVersionString>2.3.2</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/humancto/landit-releases/releases/download/v2.3.2/Landit-v2.3.2.dmg" length="25778950" type="application/octet-stream" sparkle:edSignature="FKARtCCBItGN1FJhk7pKQamIBk1gOU3nU3l3X8kh9MUu6rNxvn0hOGflOKMqpxck45blm/72HKvwuUybOP14Dg=="/>
+            <enclosure url="https://humancto.com/downloads/landit/Landit-v2.3.2.dmg" length="25778950" type="application/octet-stream" sparkle:edSignature="FKARtCCBItGN1FJhk7pKQamIBk1gOU3nU3l3X8kh9MUu6rNxvn0hOGflOKMqpxck45blm/72HKvwuUybOP14Dg=="/>
         </item>
     </channel>
 </rss>
