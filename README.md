@@ -14,7 +14,7 @@ Find jobs. Ace interviews. Track everything. Land the offer.
 &nbsp;
 [![GitHub Stars](https://img.shields.io/github/stars/humancto/landit-releases?style=for-the-badge&color=FBBF24&logo=github&logoColor=white)](https://github.com/humancto/landit-releases)
 
-[![Website](https://img.shields.io/badge/Website-humancto.github.io-4A9EFF?style=flat-square)](https://humancto.github.io/landit-releases/)
+[![Website](https://img.shields.io/badge/Website-landit--releases.pages.dev-4A9EFF?style=flat-square)](https://landit-releases.pages.dev/)
 [![Release Date](https://img.shields.io/github/release-date/humancto/landit-releases?style=flat-square&color=34D399&label=Updated)](https://github.com/humancto/landit-releases/releases)
 [![Downloads](https://img.shields.io/github/downloads/humancto/landit-releases/total?style=flat-square&color=A78BFA&label=Downloads)](https://github.com/humancto/landit-releases/releases)
 [![Swift](https://img.shields.io/badge/Swift-5.9-F05138?style=flat-square&logo=swift&logoColor=white)]()
