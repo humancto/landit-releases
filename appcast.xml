@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
-  Placeholder feed for the public release site. Release CI replaces this file
-  with a Sparkle-signed feed generated from the notarized DMG.
--->
-<rss version="2.0"
-     xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"
-     xmlns:dc="http://purl.org/dc/elements/1.1/">
-  <channel>
-    <title>Landit Releases</title>
-    <link>https://landit-releases.pages.dev/appcast.xml</link>
-    <description>Official Landit updates.</description>
-    <language>en</language>
-  </channel>
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Landit</title>
+        <item>
+            <title>2.3.1</title>
+            <pubDate>Thu, 13 Aug 2026 09:32:05 -0700</pubDate>
+            <link>https://landit-releases.pages.dev/</link>
+            <sparkle:version>2.3.1</sparkle:version>
+            <sparkle:shortVersionString>2.3.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/humancto/landit-releases/releases/download/v2.3.1/Landit-v2.3.1.dmg" length="25709748" type="application/octet-stream" sparkle:edSignature="f4KaPKRxMKyIYytrkjQXn/y5r1qs+mUXkIDPKy8k8Dwp8w5BrAJVddjjHm2Zej9Yjsc3g3D4HXC9X2ijoSMaDA=="/>
+        </item>
+    </channel>
 </rss>
